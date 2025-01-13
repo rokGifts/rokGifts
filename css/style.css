@@ -1,0 +1,255 @@
+:root{
+    --primario:#9c27b0;
+    --primarioOscuro:#89119d;
+    --secundario:#ffce00;
+    --secundarioOscuro:rgb(233,233,2);
+    --blanco:#fff;
+    --negro:#000;
+
+    
+}
+
+
+html{
+    box-sizing: border-box;
+    font-size: 62.5%;
+}
+*,*:before, *:after{
+    box-sizing: inherit;
+}
+
+/*********************GLOBALES************************/
+body{
+    background-color: var(--primario);
+    font-size: 1.6rem;
+    line-height: 1.5;
+}
+p{
+    font-size: 1.8rem;
+    font-family: Arial, Helvetica, sans-serif;
+    color: var(--blanco);
+}
+a{
+    text-decoration: none;
+}
+img{
+    max-width: 100%;
+}
+.contenedor{
+    max-width: 120rem;
+    margin: 0 auto;
+}
+h1,h2,h3{
+    text-align: center;
+    color: var(--secundario);
+    font-family: Arial, Helvetica, sans-serif;
+}
+h1{
+    font-size: 4rem;
+}
+h2{
+    font-size: 3.2rem;
+}
+h3{
+    font-size: 3.4rem;
+}
+
+/*Header*/
+.header{
+    display: flex;
+    justify-content: center;
+
+}
+.header__logo{
+    margin: 3rem 0;
+}
+/*footer*/
+
+.footer{
+    background-color: var(--primarioOscuro);
+    padding: 1rem 0;
+    margin-top: 2rem;
+}
+.footer__texto{
+    font-family: Arial, Helvetica, sans-serif;
+    text-align: center;
+    font-size: 2.2rem; 
+}
+
+/*navegacion*/
+.navegacion{
+    background-color: var(--primarioOscuro);
+    padding: 1rem 0;
+    display: flex;
+    justify-content: center;
+    gap: 2rem; /*esto es para separar los elementos en mi fila*/
+}
+.navegacion__enlace{
+    font-family: Arial, Helvetica, sans-serif;
+    color: var(--blanco);
+    font-size: 3rem;
+
+}
+.navegacion__enlace:hover,
+.navegacion__enlace--activo{
+    color: var(--secundario);
+
+}
+
+/***grid de los productos****/
+.grid{
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+}
+@media (min-width: 768px){ /*hasta un minimo de 768px se va a cumplir lo siguiente*/
+  .grid{
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+/**productos**/
+.producto{
+    background-color: var(--primarioOscuro);
+    
+    padding: 1rem;
+    margin: 1rem;
+}
+.producto__imagen{
+   width: 100%;
+}
+
+.producto__nombre{
+    font-size: 4rem;
+}
+.producto__precio{
+    font-size: 2.8rem;
+    color: var(--secundario);
+}
+.producto__nombre,
+.producto__precio{
+    font-family: Arial, Helvetica, sans-serif;
+    margin: 1rem 0;
+    text-align: center;
+    line-height: 1.2;
+}
+
+/**fotos que ocupan dos espacios**/
+.grafico{
+    min-height: 30rem;
+    background-repeat: no-repeat; /*con esto las imagenes colocadas con background image 
+    si quedan pequeñas en el lugar no se repitan*/
+    background-size: cover; /*con esto el espacio q ella no pudo rellenar se estira
+    y lo rellena*/
+
+}
+.grafico--camisas{
+    grid-row: 2 / 3; /*esto indica q va de la fila 2 a la 3*/
+    grid-column: 1 / 3; /*y aqui indica el ancho que es desde 1 q es el borde de la
+    1ra columna hasta el punto 3 que seria abarcar dos espacios en total*/
+    background-image: url(../img/grafico1.jpg);
+}
+.grafico--node{
+    background-image: url(../img/grafico2.jpg);
+    grid-column: 1 / 3;
+    grid-row: 8 / 9;
+}
+@media (min-width: 768px){ /*como en la vista movil este grafico se salia del espacio para no perjudicar la interfaz
+    lo coloque que solo estuviera en esa posicion mientras no hubiera vista pequeña*/
+  .grafico--node{
+    grid-row: 5 / 6;
+    grid-column: 2 / 4;
+  }
+}
+
+/***nosotros**/
+.nosotros{
+    display: grid;
+    grid-template-rows: repeat(2, auto);
+}
+@media (min-width: 768px){
+    .nosotros{
+        
+        grid-template-columns: repeat(2, 1fr);
+        column-gap: 2rem;
+    }
+}
+
+.nosotros__contenido{
+    padding: 2rem;
+    padding-top: 0;
+    
+}
+.nosotros__imagen{
+    grid-row: 1 / 2;
+    width: 100%;
+}
+@media (min-width: 768){
+  .nosotros__imagen{
+    grid-column: 2 / 3;
+  }
+}
+
+/**bloques finales en la pagina nosotros**/
+
+.bloques{
+    display: grid;
+    grid-template-columns: repeat(2,1fr);
+    gap: 2rem;
+    
+}
+@media (min-width: 768px){
+  .bloques{
+    grid-template-columns: repeat(4,1fr);
+  }
+}
+.bloque{
+    text-align: center;
+
+}
+.bloque__imagen{
+    width: 100%;
+}
+.bloque__titulo{
+    margin: 0;
+}
+
+/**pagina del prducto***/
+
+@media (min-width: 768px){
+  .camisa{
+    display: grid;
+    grid-template-columns: repeat(2,1fr);
+    column-gap: 2rem;
+  }
+}
+
+.formulario{
+    display: grid;
+    grid-template-columns: repeat(2,1fr);
+    gap: 2rem;
+}
+.formulario__campo{
+    border: 1rem solid var(--primarioOscuro); /* ancho , borde , color*/
+    background-color: transparent; /*es lo mismo que no tener fondo , para q se vea lo de atras*/
+    color: var(--blanco);
+    font-size: 2rem;
+    font-family: Arial, Helvetica, sans-serif;
+    padding: 1rem;
+    appearance: none; /*de esta manera le doy estilos a un select, en este caso con esso le quito la flechita
+    que el boton coloca al lado del valor*/
+}
+.formulario__submit{
+    background-color: var(--secundario);
+    border: none;
+    font-size: 2rem;
+    font-family: Arial, Helvetica, sans-serif;
+    padding: 2rem;
+    transition: background-color .3s ease; /*con esto la propiedad que le coloquemos en el
+    hover las activa pero a modo de animacion para que se vea mejor , lo suaviza */
+    grid-column: 1/3;
+
+}
+.formulario__submit:hover{
+    cursor: pointer; /**para q me ponga la manito al pasar por ahi arriba*/
+    background-color: var(--secundarioOscuro);
+}
